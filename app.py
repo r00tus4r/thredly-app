@@ -24,6 +24,10 @@ login_manager.login_message = '❗ Please log in to view this page!'
 login_manager.login_message_category = 'info'
 csrf = CSRFProtect(app)
 
+
+# ============== MODELS ==============
+
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -36,6 +40,10 @@ class User(db.Model, UserMixin):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
+
+
+# ============== FORMS ==============
+
 
 class UserCreationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(message='Username is required.',), Length(min=3, max=64, message='Username must be between 3 and 64 characters.')], description='Enter a unique username (3-64 characters).')
