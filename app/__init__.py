@@ -32,7 +32,7 @@ def create_app():
 
     from . import auth, routes
     app.register_blueprint(routes.bp)
-    app.register_blueprint(auth.bp, arl_prefix='/auth')
+    app.register_blueprint(auth.bp, url_prefix='/auth')
 
     return app
 
