@@ -12,7 +12,7 @@ class UserCreationForm(FlaskForm):
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user:
-            raise ValidationError('')
+            raise ValidationError('That username is taken. Please choose a different one.')
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(message='Username is required.',), Length(min=3, max=64, message='Username must be between 3 and 64 characters.')],
