@@ -1,15 +1,14 @@
 {% extends 'base.html' %}
-{% block title %}Login{% endblock %}
+{% block title %}Register{% endblock %}
 {% block content %}
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2 class="text-center display-4 mb-4 text-uppercase">Login</h2>
-            <form action="{{ url_for('login') }}" method="post">
+            <h2 class="text-center text-uppercase mb-4 display-4">Register</h2>
+            <form action="{{ url_for('auth.register') }}" method="post">
                 {{ form.hidden_tag() }}
                 <div class="mb-4">
                     {{ form.username.label(class="form-label") }}
-                    {{ form.username(class="form-control" + (' is-invalid' if form.username.errors else ''),
-                        placeholder="Enter your username ...") }}
+                    {{ form.username(class="form-control" + (' is-invalid' if form.username.errors else ''), placeholder="Create a unique username") }}
                     <div class="text-muted small">{{ form.username.description }}</div>
                     {% for error in form.username.errors %}
                         <div class="invalid-feedback">
@@ -19,10 +18,19 @@
                 </div>
                 <div class="mb-4">
                     {{ form.password.label(class="form-label") }}
-                    {{ form.password(class="form-control" + (' is-invalid' if form.password.errors else ''),
-                        placeholder="Enter your password ...") }}
+                    {{ form.password(class="form-control" + (' is-invalid' if form.password.errors else ''), placeholder='Create a password') }}
                     <div class="text-muted small">{{ form.password.description }}</div>
                     {% for error in form.password.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="mb-4">
+                    {{ form.password_confirm.label(class="form-label") }}
+                    {{ form.password_confirm(class="form-control" + (' is-invalid' if form.password_confirm.errors else ''), placeholder='Password confirmation') }}
+                    <div class="text-muted small">{{ form.password_confirm.description }}</div>
+                    {% for error in form.password_confirm.errors %}
                         <div class="invalid-feedback">
                             {{ error }}
                         </div>
@@ -31,7 +39,7 @@
                 {{ form.submit(class="btn btn-primary w-100") }}
             </form>
             <p class="text-center mt-4">
-                Don't have an account? <a href="{{ url_for('register') }}">Register here</a>
+                Already have an account? <a href="{{ url_for('auth.login') }}">Login here</a>
             </p>
         </div>
     </div>
