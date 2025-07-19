@@ -1,23 +1,5 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
 {% block content %}
-    <h2 class="text-center display-4 mb-4 text-uppercase">All threads</h2>
-    {% if threads %}
-        <div class="">
-            {% for thread in threads %}
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h6 class="text-success">{{ thread.username }}</h6>
-                        <p class="mb">{{ thread.message }}</p>
-                        <span>
-                            <a href=""><i class="bi bi-heart"></i></a> {{ thread.likes }}
-                        </span>
-                        <span class="text-body-secondary">
-                            <i class="bi bi-eye-fill"></i> {{ thread.views }}
-                        </span>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
+    <h2>Home Page</h2>
 {% endblock %}
