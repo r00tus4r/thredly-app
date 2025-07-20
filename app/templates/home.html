@@ -6,6 +6,22 @@
             {% if threads %}
                 <h2 class="fw-bold">All Threads</h2>
                 <p class="mb-4">Browse the latest posts from the community.</p>
+                <div class="row gap-3">
+                    {% for thread in threads %}
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="text-muted">{{ thread.author.username }} · {{ thread.created_at.strftime('%m-%d-%Y') }}</h6>
+                                    <p class="">{{ thread.body }}</p>
+                                    <div class="w-25 d-flex align-items-center justify-content-between">
+                                        <a class="text-decoration-none text-muted" href=""><i class="bi bi-heart text-danger"></i> {{ thread.likes }}</a>
+                                        <span class="text-muted"><i class="bi bi-eye-fill"></i> {{ thread.views }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             {% else %}
                 <div class="text-center">
                     <h4>No threads yet</h4>
