@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
 from .models import User
 
@@ -20,3 +20,7 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired(message='Password is required.'), Length(min=6, message='Password must be at least 6 characters long.')],
         description='Use a strong password with at least 6 characters, including letters and numbers.')
     submit = SubmitField('Login')
+
+class ThreadForm(FlaskForm):
+    body = TextAreaField('Thread Body', validators=[DataRequired(message=''), Length(max=300, message='')], description='')
+    submit = SubmitField('Post')

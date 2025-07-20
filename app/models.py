@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
 class Thread(db.Model):
     __tablename__ = 'threads'
     id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.Text(200), nullable=False)
+    body = db.Column(db.Text(300), nullable=False)
     views = db.Column(db.Integer, default=0)
     likes = db.Column(db.Integer, default=0)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
