@@ -8,11 +8,11 @@
         </button>
         <div class="collapse navbar-collapse" id="menu-toggler">
             <div class="navbar-nav">
-                <a href="{{ url_for('routes.home') }}" class="nav-link {% if request.endpoint == 'routes.home' %}active{% endif %}">Home</a>
                 {% if not current_user.is_authenticated %}
-                    <a href="{{ url_for('auth.login') }}" class="nav-link {% if request.endpoint == 'auth.login' %}active{% endif %}">Login</a>
-                    <a href="{{ url_for('auth.register') }}" class="nav-link {% if request.endpoint == 'auth.register' %}active{% endif %}">Register</a>
+                <a href="{{ url_for('auth.login') }}" class="nav-link {% if request.endpoint == 'auth.login' %}active{% endif %}">Login</a>
+                <a href="{{ url_for('auth.register') }}" class="nav-link {% if request.endpoint == 'auth.register' %}active{% endif %}">Register</a>
                 {% else %}
+                    <a href="{{ url_for('routes.home') }}" class="nav-link {% if request.endpoint == 'routes.home' %}active{% endif %}">Home</a>
                     <a href="{{ url_for('auth.logout') }}" class="nav-link {% if request.endpoint == 'auth.logout' %}active{% endif %}">Logout</a>
                 {% endif %}
             </div>
