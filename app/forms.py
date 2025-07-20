@@ -22,5 +22,5 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 class ThreadForm(FlaskForm):
-    body = TextAreaField('Thread Body', validators=[DataRequired(message=''), Length(max=300, message='')], description='')
+    body = TextAreaField('Thread Body', validators=[DataRequired(message='Please enter some text for your thread.'), Length(max=300, message='Thread cannot exceed 300 characters.')], description='Write something to share with others (max 300 characters).')
     submit = SubmitField('Post')

@@ -1,5 +1,6 @@
 from . import db
 from flask_login import UserMixin
+from sqlalchemy.sql import func
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -17,6 +18,7 @@ class Thread(db.Model):
     body = db.Column(db.Text(300), nullable=False)
     views = db.Column(db.Integer, default=0)
     likes = db.Column(db.Integer, default=0)
+    created_at = db.Column(db.DateTime, default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     def __repr__(self):
