@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_wtf import CSRFProtect
-from flask_migrate import Migrate
+# from flask_migrate import Migrate
 
 import os
 import dotenv
@@ -11,7 +11,7 @@ dotenv.load_dotenv()
 db = SQLAlchemy()
 login_manager = LoginManager()
 csrf = CSRFProtect()
-migrate = Migrate()
+# migrate = Migrate()
 
 def create_app():
     app = Flask(__name__, template_folder='templates', static_folder='static', static_url_path='/')
@@ -22,7 +22,7 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
     csrf.init_app(app)
-    migrate.init_app(app)
+    # migrate.init_app(app)
 
     login_manager.login_view = 'auth.login'
     login_manager.login_message = 'Please log in to view this page!'
